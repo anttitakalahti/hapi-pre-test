@@ -54,6 +54,26 @@ server.route({
 	}
 });
 
+server.route({
+	method: 'GET',
+	path: '/both',
+	config: {
+		pre: [ 
+			[
+				{ method: slow, assign: 'slow' },
+				{ method: fast, assign: 'fast' } 
+			],
+			{ method: fast, assign: 'ffast' }
+		],
+		handler: function (request, reply) {
+			// I am fast function and request.pre.slow is undefined
+			// I am slow function and request.pre.fast is true
+			// I am fast function and request.pre.slow is true
+		        reply('Hello, world!');
+		}
+	}
+});
+
 server.start(function(error) {
 	if (error) { throw error; }
 	console.log('Server running at:', server.info.uri);
