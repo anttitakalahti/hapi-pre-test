@@ -12,8 +12,56 @@ When using config { pre: [...], handler: function(request, reply) {...} } style 
 ## [http://localhost:3000/sequential](http://localhost:3000/sequential)
 putting everything in an array makes the code run sequential and the result of previous calls can be used with the  request.pre object.
 
+```javascript
+server.route({
+    method: ...
+    path: ...
+    config: {
+        pre: [
+            { method: slow, assign: 'slow' },
+            { method: fast, assign: 'fast' }
+        ],
+        handler: ...
+    }
+});
+```
+
+
 ## [http://localhost:3000/parallel](http://localhost:3000/parallel) 
 If you have multiple calls and they can be run simultaneously then this is the way to go.
 
+```javascript
+server.route({
+    method: ...
+    path: ...
+    config: {
+        pre: [
+            [
+                { method: slow, assign: 'slow' },
+                { method: fast, assign: 'fast' }
+            ]
+        ],
+        handler: ...
+    }
+});
+```
+
 ## [http://localhost:3000/both](http://localhost:3000/both)
 A nice thing is that these can be combined. One could load some data first and then do bunch of stuff with it later. Not that you should. Your code should be clean. Always.
+
+```javascript
+server.route({
+    method: ...
+    path: ...
+    config: {
+        pre: [
+            [
+                { method: slow, assign: 'slow' },
+                { method: fast, assign: 'fast' }
+            ],
+            { method: fast, assign: 'fastt' }
+        ],
+        handler: ...
+    }
+});
+```
