@@ -26,6 +26,10 @@ server.route({
 });
 ```
 
+This will print:
+* I am slow function and request.pre.fast is undefined
+* I am fast function and request.pre.slow is true
+
 
 ## [http://localhost:3000/parallel](http://localhost:3000/parallel) 
 If you have multiple calls and they can be run simultaneously then this is the way to go.
@@ -45,6 +49,9 @@ server.route({
     }
 });
 ```
+This will print:
+* I am fast function and request.pre.slow is undefined
+* I am slow function and request.pre.fast is true
 
 ## [http://localhost:3000/both](http://localhost:3000/both)
 A nice thing is that these can be combined. One could load some data first and then do bunch of stuff with it later. Not that you should. Your code should be clean. Always.
@@ -65,3 +72,7 @@ server.route({
     }
 });
 ```
+This will print:
+* I am fast function and request.pre.slow is undefined
+* I am slow function and request.pre.fast is true
+* I am fast function and request.pre.slow is true
