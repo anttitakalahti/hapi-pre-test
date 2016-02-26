@@ -1,2 +1,2 @@
 # hapi-pre-test
-Testing how prerequisites work in Hapi
+Testing how prerequisites work in Hapi 13
