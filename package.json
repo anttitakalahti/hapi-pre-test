@@ -1,0 +1,15 @@
+{
+  "name": "hapi-pre-test",
+  "version": "1.0.0",
+  "description": "Testing how Hapi 13 pre calls work",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "https://github.com/anttitakalahti/hapi-pre-test.git",
+  "author": "antti.takalahti",
+  "license": "ISC",
+  "dependencies": {
+    "hapi": "^13.0.0"
+  }
+}
